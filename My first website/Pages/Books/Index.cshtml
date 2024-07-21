@@ -1,0 +1,141 @@
+@* @page
+@model Iwanttodie.Pages.Books.Index
+@{
+    ViewData["Title"] = "Index";
+    ViewData["ShowFooter"] = true; 
+}
+
+<h2 class="text-center mb-3">List Of Books</h2>
+
+<a class="btn btn-primary mb-3" href="/Books/Add">New Books</a>
+
+<table class="table">
+
+<thread>
+
+    <tr>
+
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Created_At</th>
+        <th>Updated_at</th>
+        <th>Action</th>
+    </tr>
+</thread>
+
+
+<tbody>
+
+    @foreach(var book in Model.BookList)
+    {
+        <tr>
+
+            <td>@book.Id</td>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Genre</td>
+            <td>@book.Price</td>
+            <td>@book.Quantity</td>
+            <td>@book.Created_At</td>
+            <td>@book.Updated_At</td>
+            <td style="white-space:normwrap">
+            <a class="btn btn-primary edit-button mb-2" href="/Books/Edit?id=@book.Id">Edit</a>
+            <a class="btn btn-primary delete-button" href="/Books/Delete?id=@book.Id">Delete</a>            
+
+            </td>
+        </tr>
+    }
+</tbody>
+
+</table> 
+  *@
+
+
+
+@page
+@model Iwanttodie.Pages.Books.Index
+@{
+    ViewData["Title"] = "Index";
+    ViewData["ShowFooter"] = true;
+}
+
+<h2 class="text-center mb-3">List Of Books</h2>
+
+<button id="toggleFilters" class="btn btn-primary mb-3">Filters</button>
+
+<form id="filterForm" method="get" style="display: none;">
+    <div class="row mb-3">
+        <div class="col">
+            <input type="text" class="form-control" name="titleFilter" placeholder="Filter by Title">
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" name="authorFilter" placeholder="Filter by Author">
+        </div>
+
+        <div class="col-md-3">
+            <input type="text" class="form-control" name="genreFilter" placeholder="Filter by Genre">
+        </div>
+        
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Apply Changes</button>
+        </div>
+    </div>
+</form>
+
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Created_At</th>
+            <th>Updated_at</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var book in Model.BookList)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@book.Price€</td>
+                <td>@book.Quantity</td>
+                <td>@book.Created_At</td>
+                <td>@book.Updated_At</td>
+                <td style="white-space:normal">
+                    <a class="btn btn-primary edit-button mb-2" href="/Books/Edit?id=@book.Id">Edit</a>
+                    <a class="btn btn-primary delete-button" href="/Books/Delete?id=@book.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    document.getElementById('toggleFilters').addEventListener('click', function () {
+        var filterForm = document.getElementById('filterForm');
+        if (filterForm.style.display === 'none') {
+            filterForm.style.display = 'block';
+        } else {
+            filterForm.style.display = 'none';
+        }
+    });
+
+</script>
+
+ <footer>
+        <a class="btn btn-primary mb-3" href="/Books/Add">New Books</a>
+
+    </footer>
