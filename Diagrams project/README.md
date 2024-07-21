@@ -1,3 +1,5 @@
+JAVA PROJECT
+
 Management software for a restaurant-project with diagrams
 
 Diagrams are made using visual paradigm software or others.
