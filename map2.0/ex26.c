@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Structura pentru a reprezenta o țară
 struct Tara {
     char nume[50];
     int numarVecini;
@@ -17,10 +16,9 @@ int main() {
     printf("Introduceti numarul de tari: ");
     scanf("%d", &numarTari);
 
-    // Alocare dinamica pentru vectorul de tari
+    
     struct Tara* tari = (struct Tara*)malloc(numarTari * sizeof(struct Tara));
 
-    // Citirea datelor pentru fiecare tara
     for (int i = 0; i < numarTari; i++) 
     {
         printf("Introduceti numele tarii %d: ", i + 1);
@@ -36,20 +34,17 @@ int main() {
         }
     }
 
-        //calculul nr total de culori
         int numarCulori=0;
         for(int i=0; i<numarTari; ++i)
         {
             numarCulori+=tari[i].numarVecini+1;
         }
 
-      //alocare dinamica pt vector culori
       char**culori=(char **)malloc(numarCulori *sizeof(char*));
       for(int i=0;i<numarCulori;++i)
       {
       culori[i]=(char*)malloc(20*sizeof(char));
       }
-           //optiuni de culori
 
            printf("\nIntroduceti optiunile de culori (separat prin spatiu):");
 
@@ -58,7 +53,6 @@ int main() {
             scanf("%s",culori[i]);
            }
     
-    //atribuire culori pt tara si vecin
 
     int culoareCurenta=0;
 for(int i=0;i<numarTari;++i)
@@ -72,7 +66,6 @@ for(int j=0;j<tari[i].numarVecini;++j)
 ++culoareCurenta;
 }
 
-//afisare tari,vecini +culoare
 
 for(int i=0;i<numarTari;++i)
 {
@@ -84,8 +77,6 @@ for(int j=0;j<tari[i].numarVecini;++j)
 printf("\n");
 }
     
-
-    // Eliberarea memoriei alocate dinamic
     for (int i = 0; i < numarCulori; ++i) {
         free(culori[i]);
     }
