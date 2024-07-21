@@ -2,4 +2,4 @@
 
 
 
-these are the main projects i did so far during university, feel free check them out, but pls dont edit them.
+these are the main projects I did so far during university, feel free check them out, but please dont edit them.
